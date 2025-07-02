@@ -9,7 +9,7 @@ model = AutoModelForQuestionAnswering.from_pretrained(MODEL_NAME)
 model.eval()  # MODO INFERENCIA
 
 # ----------------------------------------------------------
-# Paso 1: Datos simulados de diferentes longitudes
+# Paso 1: DATOS SIMULADOS DE DIFERENTES LONGITUDES
 # ----------------------------------------------------------
 contexts = [
     "La UNI está en Lima.",
@@ -24,7 +24,7 @@ questions = [
 ]
 
 # ----------------------------------------------------------
-# Paso 2: Tokenización con padding dinámico
+# Paso 2: TOKENIZACIÓN CON PADDING DINÁMICO
 # padding=True ajusta al tamaño máximo del batch automáticamente.
 # truncation=True corta si es demasiado largo.
 # return_tensors="pt" devuelve tensores para PyTorch.
@@ -38,7 +38,7 @@ inputs = tokenizer(
 )
 
 # ----------------------------------------------------------
-# Paso 3: Inferencia por batch (paralelo)
+# Paso 3: INFERENCIA POR BATCH (PARALELO)
 # El modelo procesa todos los ejemplos a la vez, usando el padding necesario.
 # ----------------------------------------------------------
 with torch.no_grad():
@@ -49,7 +49,7 @@ start_logits = outputs.start_logits
 end_logits = outputs.end_logits
 
 # ----------------------------------------------------------
-# Paso 4: Decodificamos respuestas token-a-token por ejemplo
+# Paso 4: DECODIFICAMOS RESPUESTAS TOKEN A TOKEN POR EJEMPLO
 # Para cada ejemplo, encontramos el token de inicio y fin de la respuesta.
 # ----------------------------------------------------------
 for i in range(len(questions)):
@@ -60,5 +60,5 @@ for i in range(len(questions)):
     answer_ids = input_ids[start_idx:end_idx]
     answer = tokenizer.decode(answer_ids)
 
-    print(f"❓ {questions[i]}")
-    print(f"✅ Respuesta: {answer}\n")
+    print(f" {questions[i]}")
+    print(f" Respuesta: {answer}\n")
