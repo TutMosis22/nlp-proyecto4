@@ -51,7 +51,7 @@ def benchmark_pytorch():
     return {"modelo": "pytorch", "batch_size": BATCH_SIZE, "latencia_s": latency, "throughput": throughput}
 
 # -------------------------------
-# Función: tiempo de inferencia ONNX
+# Función: TIEMPO DE INFERENCIA ONNX
 # -------------------------------
 def benchmark_onnx():
     inputs = tokenizer(questions, contexts, return_tensors="np", padding=True, truncation=True)
@@ -69,7 +69,7 @@ def benchmark_onnx():
     return {"modelo": "onnx", "batch_size": BATCH_SIZE, "latencia_s": latency, "throughput": throughput}
 
 # -------------------------------
-# Ejecución y comparación
+# EJECUCIÓN Y COMPARACIÓN
 # -------------------------------
 if __name__ == "__main__":
     results = []
