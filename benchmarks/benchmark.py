@@ -76,7 +76,7 @@ if __name__ == "__main__":
     results.append(benchmark_pytorch())
     results.append(benchmark_onnx())
 
-    # Mostrar resultados como tabla
+    # Mostrar resultados como tablaa
     df = pd.DataFrame(results)
     print("\nResultados de Benchmark:\n")
     print(df.to_string(index=False))
