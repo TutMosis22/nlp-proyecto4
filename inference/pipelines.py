@@ -2,19 +2,19 @@ import torch
 from transformers import pipeline
 
 # ---------------------------------------------------------------
-# Cargamos un pipeline de generación de texto (modelo autoregresivo).
-# Este tipo de modelo predice el siguiente token dado el anterior.
+# CARGAMOS UN PIPELINE DE GENERACIÓN DE TEXTO (MODELO AUTOREGRESIVO)
+#ESTE TIPO DE MODELO PREDICE EL SIGUIENTE TOKEN DADO EL ANTERIOR
 # ---------------------------------------------------------------
-# Por defecto usa 'gpt2', pero podemos cambiarlo a uno más pequeño si es lento.
-# Por ejemplo: 'distilgpt2' es más ligero.
+#POR DEFECTO USA 'gpt2', PERO PODEMOS CAMBIARLO A UNO MÁS PEQUEÑO SI ES LENTO
+#POR EJEMPLO: 'distilgpt2' ES MÁS LIGERO
 text_generator = pipeline("text-generation", model="distilgpt2")
 
 # ---------------------------------------------------------------
-# Cargamos un pipeline de preguntas y respuestas (question answering).
-# Este tipo de modelo se basa en comprensión de texto: recibe un contexto
-# y una pregunta, y devuelve la respuesta extraída del contexto.
+# CARGAMOS UN PIPELINE DE PREGUNTAS Y RESPUESTAS (question answering).
+#ESTE TIPO DE MODELO SE BASA EN COMPRESIÓN DE TEXTO: RECIBE UN CONTEXTO
+#Y UNA PREGUNTA, Y DEVUELVE LA RESPUESTA EXTRAÍDA DEL CONTEXTO
 # ---------------------------------------------------------------
-# Usamos 'distilbert-base-cased-distilled-squad' entrenado en dataset SQuAD.
+# USAMOS 'distilbert-base-cased-distilled-squad' ENTRENADO EN DATASET SQuAD.
 qa_pipeline = pipeline("question-answering", model="distilbert-base-cased-distilled-squad")
 
 def generate_text(prompt: str, max_length: int = 50) -> str:
